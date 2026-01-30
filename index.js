@@ -4,8 +4,9 @@ const db = require('./config/db_config');
 const app = express();
 const port = process.env.PORT;
 const host = process.env.HOST;
-
+app.use(express.json());
+const categoriesRouter = require('./routes/categories_R');
 app.use('/users',require('./routes/users_R'));
 
-
+app.use('/categories',categoriesRouter);
 app.listen(port, () => {console.log(`http://${host}:${port}`);});
